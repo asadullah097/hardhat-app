@@ -1,16 +1,18 @@
-/**
- * @type import('hardhat/config').HardhatUserConfig
- */
+
 require('@nomiclabs/hardhat-waffle')
+require("dotenv").config({ path: ".env" });
+
+const ALCHEMY_API_KEY_URL = process.env.ALCHEMY_API_KEY_URL;
+
+const RINKEBY_PRIVATE_KEY = process.env.RINKEBY_PRIVATE_KEY;
 
 const PRIVATE_KEY = process.env.KEY
 module.exports = {
-  solidity: "0.7.3",
-
+  solidity: "0.8.4",
   networks: {
     rinkeby: {
-      url: process.env.ALCHEMY_API_KEY,
-      accounts: [`${PRIVATE_KEY}`]
-    }
-  }
+      url: ALCHEMY_API_KEY_URL,
+      accounts: [RINKEBY_PRIVATE_KEY],
+    },
+  },
 };
